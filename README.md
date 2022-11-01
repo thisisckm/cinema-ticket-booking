@@ -1,1 +1,1 @@
-# cinema-ticket-booking
+# Cinema Ticket Booking Service
