@@ -9,6 +9,19 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
 
+/**
+ * The CTBS's rule and regularity are implemented here in this class Regulatory.
+ * 
+ * Keeping the expansion in the mind this class is made depending on the class {@literal {@link uk.gov.dwp.uc.pairtest.domain.CinemaShow}},
+ * but not used.
+ * 
+ * The function validate deals with check core business rules, where as the function applyInfantSeatAllocationRule are deal with applying the
+ * infant seat allocation process.
+ * 
+ * @author Chandrakumar Murugesan
+ * @version 1.0
+ * 
+ */
 public class Regulatory {
     
     private CinemaShow cinemaShow;
@@ -17,6 +30,15 @@ public class Regulatory {
         this.cinemaShow = cinemaShow;
     }
 
+    /**
+     * The CTBS's code rules and regularity is process by this function. If any violation then runtime exception
+     * InvalidPurchaseException is thrown.
+     * 
+     *  
+     * @param ...requests - Purchase requests
+     * @return Boolean - return true if the process is successfully
+     * @throws InvalidPurchaseException - If any violation then this runtime exception is thrown.
+     */
     public Boolean validate(TicketTypeRequest ...requests) throws InvalidPurchaseException {
         
         boolean adultAccommodation = false;
@@ -52,6 +74,14 @@ public class Regulatory {
         return true;
     }
 
+    
+    /**
+     * The function are deal with applying the infant seat allocation process.
+     * 
+     * Ifant request is filter out. Sum of all other request type seat requests is returned.  
+     * @param ...requests - Purchase requests
+     * @return int - Sum of the seat requests
+     */
     public int applyInfantSeatAllocationRule(TicketTypeRequest ...requests) {
 
         List<TicketTypeRequest> requestsAsList = Arrays.asList(requests);
