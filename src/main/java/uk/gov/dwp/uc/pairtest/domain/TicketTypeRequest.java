@@ -26,4 +26,9 @@ public class TicketTypeRequest {
         ADULT, CHILD , INFANT
     }
 
+    @Override
+    public String toString() {
+        return String.format("Type: %s, No of tickets: %d", getTicketType().name(), getNoOfTickets());
+    }
+
 }
